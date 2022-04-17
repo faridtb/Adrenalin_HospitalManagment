@@ -26,13 +26,11 @@ As the program demo is written, the category is roughly taken as an employee (it
 to add to the system
 
  
- > - According to the responsibilities of users who will use the program below
-A list of available functions is provided.
 
 
 Operations |Admin | Director | Doctor | Staffs 
 :-----|:------:|:--------:|:------:|:------:|------: 
-__User Operations__ | +|-|-|-
+__User Operations__ |+|-|-|-
 __Doctor Operations__|+|+|-|-|
 __Staff Operations__|+|+|-|-
 __Patient Operations__|+|+|+|+
