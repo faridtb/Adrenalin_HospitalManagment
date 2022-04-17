@@ -1,0 +1,32 @@
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\DataAcess.dll
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\DataAcess.pdb
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.dll
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.pdb
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\User\Desktop\Hospital\Adrenalin\Business\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\DataAcess.dll
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\DataAcess.pdb
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.dll
+C:\Users\User\Desktop\Creation\New folder\Adrenalin\Business\obj\Debug\netcoreapp3.1\Business.pdb
