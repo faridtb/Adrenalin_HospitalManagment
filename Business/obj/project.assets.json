@@ -67,11 +67,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -88,14 +88,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj"
+            "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj"
             },
-            "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj"
+            "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj"
             },
-            "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj"
+            "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj"
             }
           }
         }

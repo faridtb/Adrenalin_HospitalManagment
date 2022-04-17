@@ -11,7 +11,7 @@ namespace Adrenalin.Controller
         Patients pat = new Patients();
         Doctor doc = new Doctor();
         Medical_Services med = new Medical_Services();
-        Registration registration = new Registration();
+        Registration registration;
         PatientController patControl = new PatientController();
         DoctorController docControl = new DoctorController();
         MedicalServiceController medControl = new MedicalServiceController();
@@ -22,12 +22,12 @@ namespace Adrenalin.Controller
             Alert(ConsoleColor.DarkMagenta, "\n----------------------\n" +
                 "New Registration Panel\n" +
                 "----------------------");
-            patControl.GetAllPatients();
-            pat = patControl.GetPatient();
             int counter = 0;
             int counter1 = 0;
             int counter2 = 0;
-            while (pat is null)
+            patControl.GetAllPatients();
+            pat = patControl.GetPatient();
+            while (pat is null && patControl.choice != 1)
             {
                 counter++;
                 Alert(ConsoleColor.DarkRed, "We cant found any patient in our base");
@@ -41,10 +41,12 @@ namespace Adrenalin.Controller
                         $" You must Create new Patient another try ");
                 pat = patControl.GetPatient();
             }
-
-            medControl.GetAllService();
-            med = medControl.GetMedService();
-            while (med is null)
+            if (!(pat is null))
+            {
+                medControl.GetAllService();
+                med = medControl.GetMedService();
+            }
+            while (!(pat is null) && med is null && medControl.choice != 1)
             {
                 counter1++;
                 Alert(ConsoleColor.Red, $"There is not any Service in that id !");
@@ -56,17 +58,19 @@ namespace Adrenalin.Controller
                 }
                 med = medControl.GetMedService();
             }
-            Alert(ConsoleColor.Yellow, $"\n{med.Name} - medical service is provided by the following");
-            List<Doctor> doctors = docControl.GetAllDoctor().FindAll(i => i.services.Contains(med));
-            foreach (var item in doctors)
-                Alert(ConsoleColor.Blue, $"{item}");
-            Alert(ConsoleColor.Yellow, $"Please Choose one of them");
-            int id = TryParse();
-            doc = doctors.Find(i => i.personID == id);
-            while (doc is null)
+            if (!(pat is null) && !(med is null))
+            {
+                Alert(ConsoleColor.Yellow, $"\n{med.Name} - medical service is provided by the following doctors");
+                List<Doctor> doctors = docControl.GetAllDoctor().FindAll(i => i.services.Contains(med));
+                foreach (var item in doctors)
+                    Alert(ConsoleColor.Blue, $"{item}");
+                Alert(ConsoleColor.Yellow, $"Please Choose one of them");
+                int id = TryParse();
+                doc = doctors.Find(i => i.personID == id);
+            }
+            while (!(pat is null) && !(med is null) && doc is null && docControl.choice != 1)
             {
                 counter2++;
-                Alert(ConsoleColor.Red, $"There is not any Doctor in that id !");
                 if (doc is null && counter2 > 2)
                 {
                     Alert(ConsoleColor.Yellow, $"--Advice--\n" +
@@ -75,9 +79,9 @@ namespace Adrenalin.Controller
                 }
                 doc = docControl.GetDoctor();
             }
-            if (!(med is null && doc is null && pat is null))
+            if (!(med is null) && !(doc is null) && !(pat is null))
             {
-                Registration registr = new Registration()
+                registration = new Registration()
                 {
                     Doctor = this.doc,
                     MedicalService = this.med,
@@ -85,33 +89,51 @@ namespace Adrenalin.Controller
                     Profit = med.ServiceFee * 0.6
                 };
                 doc.Profit = med.ServiceFee * 0.4;
-                registrationService.Create(registr);
+                registrationService.Create(registration);
+                Alert(ConsoleColor.Green, "Registration added succesfully !");
             }
+            else
+                Alert(ConsoleColor.Red, "Registration Creation Fail !");
 
         }
         public Registration GetRegistration()
         {
-            int counter = 0;
-            Alert(ConsoleColor.Cyan, "Enter the Registration Id of which Registration you want");
-            while (registration is null)
+            Alert(ConsoleColor.Blue, "Enter the Id of which Registration you want");
+            int id = TryParse();
+            registration = registrationService.GetRegistration(id);
+            int choice = 0;
+            while (registration is null && choice != 1)
             {
-                counter++;
-                if (counter > 1)
-                    Alert(ConsoleColor.Red, "There is not any registration in that Id");
-                int id = TryParse();
-                registration = registrationService.GetRegistration(id);
+                Alert(ConsoleColor.Red, "There is not any Registrations in that id");
+                choice = BackContinue();
+                switch (choice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        registration = GetRegistration();
+                        break;
+                }
             }
+            if (!(registration is null))
+                Console.WriteLine(registration);
             return registration;
         }
         public void RemoveRegistration() // Only director and higher level 
         {
-            Alert(ConsoleColor.DarkRed, "Deletion of Registration\n");
-            Registration reg = registrationService.Delete(GetRegistration().RegistrationID);
-            Alert(ConsoleColor.DarkYellow, $"{reg} was deleted.");
+            Alert(ConsoleColor.DarkRed, "Deletion of Registration");
+            if (!(registration is null))
+            {
+                registration = registrationService.Delete(GetRegistration().RegistrationID);
+                Alert(ConsoleColor.DarkYellow, $"{registration} was deleted.");
+                if (GetAllRegistration().Count == 0)
+                    registration = null;
+            }
+            else
+                Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public List<Registration> GetAllRegistration()
         {
-            Alert(ConsoleColor.Blue, "\nList of Registrations");
             return registrationService.GetAll();
         }
         public List<Registration> GetSpecificRegistration()
@@ -141,37 +163,40 @@ namespace Adrenalin.Controller
         }
         public void EditRegistration()
         {
-            GetAllRegistration();
-            Alert(ConsoleColor.Yellow, "Which category do you want to change ?\n" +
-                "1)Medical Service\n" +
-                "2)Patient\n" +
-                "3)Doctor\n");
-            int input = TryParse();
-            switch (input)
+            Alert(ConsoleColor.DarkYellow, "Registration Editing\n");
+            registration = GetRegistration();
+            if (!(registration is null))
             {
-                case 1:
-                    Alert(ConsoleColor.DarkRed, "Medical Service changing");
-                    registration = GetRegistration();
-                    registration.MedicalService = medControl.GetMedService();
-                    registrationService.Edit(registration.RegistrationID, registration);
-                    break;
-                case 2:
-                    Alert(ConsoleColor.DarkCyan, "Patient changing");
-                    registration = GetRegistration();
-                    registration.Patients = patControl.GetPatient();
-                    registrationService.Edit(registration.RegistrationID, registration);
-                    break;
-                case 3:
-                    Alert(ConsoleColor.Blue, "Doctor Changing");
-                    registration = GetRegistration();
-                    registration.Doctor = docControl.GetDoctor();
-                    registrationService.Edit(registration.RegistrationID, registration);
-                    break;
-                default:
-                    Alert(ConsoleColor.Red, "Write the number which is valid for menu!");
-                    break;
+                Alert(ConsoleColor.Yellow, "Which category do you want to change ?\n" +
+                    "1)Medical Service\n" +
+                    "2)Patient\n" +
+                    "3)Doctor\n");
+                int input = TryParse();
+                switch (input)
+                {
+                    case 1:
+                        Alert(ConsoleColor.DarkRed, "Medical Service changing");
+                        registration = GetRegistration();
+                        registration.MedicalService = medControl.GetMedService();
+                        registrationService.Edit(registration.RegistrationID, registration);
+                        break;
+                    case 2:
+                        Alert(ConsoleColor.DarkCyan, "Patient changing");
+                        registration = GetRegistration();
+                        registration.Patients = patControl.GetPatient();
+                        registrationService.Edit(registration.RegistrationID, registration);
+                        break;
+                    case 3:
+                        Alert(ConsoleColor.Blue, "Doctor Changing");
+                        registration = GetRegistration();
+                        registration.Doctor = docControl.GetDoctor();
+                        registrationService.Edit(registration.RegistrationID, registration);
+                        break;
+                    default:
+                        Alert(ConsoleColor.Red, "Write the number which is valid for menu!");
+                        break;
+                }
             }
-
         }
 
     }

@@ -7,6 +7,11 @@ namespace Entities.Models
     public class Staff:Person
     {
         public Staff_Services service;
+        public Staff()
+        {
+            service = new Staff_Services();
+        }
+     
         public override string ToString()
         {
             return $"ID:{personID}\n" +
@@ -15,6 +20,7 @@ namespace Entities.Models
                 $"Age:{Age}\n" +
                 $"Profession:{service.Name}\n" +
                 $"Salary:{service.Salary}";
+
         }
     }
 }

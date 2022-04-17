@@ -2,8 +2,6 @@
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Utilities;
 using static Utilities.Notifications;
 
 namespace Adrenalin.Controller
@@ -11,7 +9,8 @@ namespace Adrenalin.Controller
     public class StaffServiceController
     {
         ProfessionService profession = new ProfessionService();
-        Staff_Services prof = new Staff_Services();
+        Staff_Services prof;
+        Staff staf = new Staff();
         public void CreateProfession()
         {
             Alert(ConsoleColor.Yellow, "Adding Profession");
@@ -20,55 +19,83 @@ namespace Adrenalin.Controller
             Console.Write("Enter the salary of the service:");
             int salary = TryParse();
 
-            Staff_Services service = new Staff_Services()
+            prof = new Staff_Services()
             {
                 Name = name,
                 Salary = salary
             };
-            profession.Create(service);
-            Alert(ConsoleColor.Yellow, $"About the service\n{service}");
+            profession.Create(prof);
+            Alert(ConsoleColor.Yellow, $"About the service\n{prof}");
         }
         public Staff_Services GetProfession()
         {
-            Alert(ConsoleColor.DarkYellow, "Enter the ID of the Profession you are looking for");
+            Alert(ConsoleColor.Blue, "Enter the Id of Profession you want");
             int id = TryParse();
-            Console.WriteLine(profession.GetStafService(id));
-            return profession.GetStafService(id);
+            prof = profession.GetStafService(id);
+            int choice = 0;
+            while (prof is null && choice != 1)
+            {
+                Alert(ConsoleColor.Red, "There is not any Profession in that id");
+                choice = BackContinue();
+                switch (choice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        prof = GetProfession();
+                        break;
+                }
+            }
+            if (!(prof is null))
+                Console.WriteLine(prof);
+            return prof;
+
         }
-        public void GetAllProfessions()
+        public List<Staff_Services> GetAllProfessions()
         {
-            Alert(ConsoleColor.Yellow, "List of Professions\n");
-            foreach (var item in profession.GetAll())
-                Console.WriteLine(item);
+            return profession.GetAll();
         }
         public void RemoveProfession()
         {
-            Alert(ConsoleColor.DarkRed, "Deletion of profession\n");
-            prof = profession.Delete(GetProfession().profID);
-            Alert(ConsoleColor.DarkYellow, $"{prof.Name}- profession deleted");
+            Alert(ConsoleColor.DarkRed, "Deletion of profession");
+            if (!(prof is null))
+            {
+                prof = profession.Delete(GetProfession().profID);
+                Alert(ConsoleColor.DarkYellow, $"{prof.Name}- profession deleted");
+                if (GetAllProfessions().Count == 0)
+                    prof = null;
+            }
+            else
+                Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public void EditStaffService()
         {
-            prof = GetProfession();
-            Console.WriteLine("What would you like to renew ?\n" +
-            "1)Profession Name\n" +
-            "2)Profession Salary\n");
-            Console.Write("Your choice:");
-            int input = TryParse();
-            switch (input)
-            {
-                case 1:
-                    Console.WriteLine("Name changing");
-                    prof.Name = Console.ReadLine();
-                    profession.Edit(prof.profID, prof);
-                    break;
-                case 2:
-                    Console.WriteLine("Price changing");
-                    prof.Salary = TryParse();
-                    profession.Edit(prof.profID, prof);
-                    break;
-            }
+            Alert(ConsoleColor.DarkYellow, "Profession Editing\n");
+            foreach (var item in GetAllProfessions())
+                Console.WriteLine(item);
 
+            prof = GetProfession();
+            if (!(prof is null))
+            {
+                Console.WriteLine("What would you like to renew ?\n" +
+                "1)Profession Name\n" +
+                "2)Profession Salary\n");
+                Console.Write("Your choice:");
+                int input = TryParse();
+                switch (input)
+                {
+                    case 1:
+                        Console.WriteLine("Name changing");
+                        prof.Name = Console.ReadLine();
+                        profession.Edit(prof.profID, prof);
+                        break;
+                    case 2:
+                        Console.WriteLine("Price changing");
+                        prof.Salary = TryParse();
+                        profession.Edit(prof.profID, prof);
+                        break;
+                }
+            }
         }
     }
 }

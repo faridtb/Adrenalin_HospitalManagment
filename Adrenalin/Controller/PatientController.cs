@@ -1,6 +1,7 @@
 ﻿using Business.Services;
 using Entities.Models;
 using System;
+using System.Collections.Generic;
 using static Utilities.Notifications;
 
 namespace Adrenalin.Controller
@@ -8,7 +9,8 @@ namespace Adrenalin.Controller
     public class PatientController
     {
         PatientService patientService = new PatientService();
-        Patients patients = new Patients();
+        Patients patients;
+        public int choice = 0;
 
         public Patients CreatePatient()
         {
@@ -21,58 +23,81 @@ namespace Adrenalin.Controller
             string surname = Console.ReadLine();
             Console.Write("Age:");
             int age = TryParse();
-            Patients patient = new Patients() { Name = name, Surname = surname, Age = age };
-            patientService.Create(patient);
-            Alert(ConsoleColor.Green, $"{patient.Name} added");
-            return patient;
+             patients = new Patients() { Name = name, Surname = surname, Age = age };
+            patientService.Create(patients);
+            Alert(ConsoleColor.Green, $"{patients.Name} added");
+            return patients;
 
         }
         public void RemovePatient()
         {
-            Alert(ConsoleColor.DarkRed, "Deletion of User\n");
-            patients = patientService.Delete(GetPatient().personID);
-            Alert(ConsoleColor.Green, $"Deletion of {patients.Name} completed !");
-        }
+            Alert(ConsoleColor.DarkRed, "Deletion of Patients");
+            if (!(patients is null))
+            { 
+                patients = patientService.Delete(GetPatient().personID);
+                Alert(ConsoleColor.Green, $"Deletion of {patients.Name} completed !");
+                if (GetAllPatients().Count == 0)
+                    patients = null;
+            }
+            else
+                Alert(ConsoleColor.Red, "Deletion Failed!");
+            }
         public Patients GetPatient()
         {
             Alert(ConsoleColor.Blue, "Enter the Id of which Patient you want");
             int id = TryParse();
-            Console.WriteLine(patientService.GetPatient(id));
-            return patientService.GetPatient(id);
+            patients = patientService.GetPatient(id);
+            while (patients is null && choice != 1)
+            {
+                Alert(ConsoleColor.Red, "There is not any Patients in that id");
+                choice = BackContinue();
+                switch (choice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        patients = GetPatient();
+                        break;
+                }
+            }
+            if (!(patients is null)) 
+                Console.WriteLine(patients);
+            return patients;
         }
-        public void GetAllPatients()
+        public List <Patients> GetAllPatients()
         {
-            Alert(ConsoleColor.Magenta, "\nPatients list");
-            foreach (var item in patientService.GetAll())
-                Console.WriteLine(item);
+            return patientService.GetAll();             
         }
         public void EditPatient()
         {
             Alert(ConsoleColor.DarkYellow, "Editing Patient Info\n");
-            Patients patient = GetPatient();
-            Console.WriteLine("What would you like to renew ?\n" +
-                $"1){patient.Name}'s Name\n" +
-                $"2){patient.Name}'s Surname\n" +
-                $"3){patient.Name}'s Age\n");
-            Console.Write("Your choice:");
-            int input = TryParse();
-            switch (input)
+             patients = GetPatient();
+            if (!(patients is null))
             {
-                case 1:
-                    Console.WriteLine($"Editing name of Dr.{patient.Name}");
-                    patient.Name = Console.ReadLine();
-                    patientService.Edit(patient.personID, patient);
-                    break;
-                case 2:
-                    Console.WriteLine($"Editing surname of Dr.{patient.Name}");
-                    patient.Surname = Console.ReadLine();
-                    patientService.Edit(patient.personID, patient);
-                    break;
-                case 3:
-                    Console.WriteLine($"Editing age of Dr.{patient.Name}");
-                    patient.Age = TryParse();
-                    patientService.Edit(patient.personID, patient);
-                    break;
+                Console.WriteLine("What would you like to renew ?\n" +
+                $"1){patients.Name}'s Name\n" +
+                $"2){patients.Name}'s Surname\n" +
+                $"3){patients.Name}'s Age\n");
+                Console.Write("Your choice:");
+                int input = TryParse();
+                switch (input)
+                {
+                    case 1:
+                        Console.WriteLine($"Editing name of Dr.{patients.Name}");
+                        patients.Name = Console.ReadLine();
+                        patientService.Edit(patients.personID, patients);
+                        break;
+                    case 2:
+                        Console.WriteLine($"Editing surname of Dr.{patients.Name}");
+                        patients.Surname = Console.ReadLine();
+                        patientService.Edit(patients.personID, patients);
+                        break;
+                    case 3:
+                        Console.WriteLine($"Editing age of Dr.{patients.Name}");
+                        patients.Age = TryParse();
+                        patientService.Edit(patients.personID, patients);
+                        break;
+                }
             }
         }
     }

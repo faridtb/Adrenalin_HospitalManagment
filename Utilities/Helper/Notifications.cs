@@ -35,10 +35,16 @@ namespace Utilities
             doctor,
             staff
         };
-        
-        
-	
+        public static int BackContinue()
+        {
+            Alert(ConsoleColor.Yellow, "1)Back to menu");
+            Alert(ConsoleColor.Blue, "2)Continue to search ");
+            int choice = TryParse();
+            return choice;
+        }
 
-	}
+
+
+    }
 }
 

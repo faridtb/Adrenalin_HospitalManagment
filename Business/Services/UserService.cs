@@ -50,9 +50,9 @@ namespace Business.Services
         {
             return _userRepository.GetOne(s => s.UserId == id);
         }
-        public User CheckUser(string login, string password)
+        public User CheckUser(string login, string password,User user)
         {
-            return _userRepository.CheckUser(u => u.Login == login && u.Password == password);
+            return _userRepository.CheckUser(u => user.Login == login && user.Password == password);
         }
     }
 }

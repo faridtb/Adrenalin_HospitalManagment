@@ -7,20 +7,32 @@ namespace Utilities
 {
     public static class Menu
     {
-        public static int MainMenu()
+        public static int AdminMenu()
         {
             int i = 1;
-            Alert(ConsoleColor.Cyan, $"{i++})User options\n" +
-                $"{i++})Staff's options\n" +
+            Alert(ConsoleColor.Cyan,$"{i++})Staff's options\n" +
                 $"{i++})Doctor's options\n" +
                 $"{i++})Patient's options\n" +
                 $"{i++})Medical Services options\n" +
                 $"{i++})Staff Services options\n" +
-                $"{i})Registration options\n" +
-                "0)Back To Main Menu");
+                $"{i++})Registration options\n" +
+                $"{i++})User's options\n" +
+                 $"0)Back To Login");
             return TestChoice(i);
         }
-        public static int MainMenuJunior()
+        public static int DirectorMenu()
+        {
+            int i = 1;
+            Alert(ConsoleColor.Yellow,$"{i++})Staff's options\n" +
+                $"{i++})Doctor's options\n" +
+                $"{i++})Patient's options\n" +
+                $"{i++})Medical Services options\n" +
+                $"{i++})Staff Services options\n" +
+                $"{i++})Registration options\n" +
+                 $"0)Back To Main Menu");
+            return TestChoice(i);
+        }
+        public static int StaffMainMenu()
         {
             int i = 1;
             Alert(ConsoleColor.Magenta, $"{i++})Registration\n" +
@@ -32,10 +44,18 @@ namespace Utilities
                 "0)Exit");
             return TestChoice(i);
         }
+        public static int DoctorMainMenu()
+        {
+            int i = 1;
+            Alert(ConsoleColor.Magenta, $"{i++})Daily reports\n" +
+                 $"{i})My profits\n" +
+                "0)Exit");
+            return TestChoice(i);
+        }
         public static int UserMenu()
         {
             int i = 1;
-            Alert(ConsoleColor.Cyan, $"{i++})Create User\n" +
+            Alert(ConsoleColor.DarkCyan, $"{i++})Create User\n" +
                 $"{i++})Remove User\n" +
                 $"{i++})Edit User\n" +
                 $"{i++})Get User\n" +
@@ -46,7 +66,7 @@ namespace Utilities
         public static int StaffMenu()
         {
             int i = 1;
-            Alert(ConsoleColor.White, $"{i++})Create Staff\n" +
+            Alert(ConsoleColor.DarkCyan, $"{i++})Create Staff\n" +
                $"{i++})Remove Staff\n" +
                $"{i++})Edit Staff\n" +
                $"{i++})Get Staff\n" +
@@ -58,7 +78,7 @@ namespace Utilities
         public static int StaffMenuJunior()
         {
             int i = 1;
-            Alert(ConsoleColor.White, $"{i++})Get Staff\n" +
+            Alert(ConsoleColor.DarkCyan, $"{i++})Get Staff\n" +
                $"{i})Get All Staffs\n" +
                "0)Quit");
             return TestChoice(i);
@@ -145,7 +165,7 @@ namespace Utilities
         public static int RegistrationMenu()
         {
             int i = 1;
-            Alert(ConsoleColor.DarkRed, $"{i++})Add Registration\n" +
+            Alert(ConsoleColor.Magenta, $"{i++})Add Registration\n" +
                $"{i++})Remove Registration\n" +
                $"{i++})Edit Registration\n" +
                $"{i++})Get Registration\n" +
@@ -175,6 +195,7 @@ namespace Utilities
             }
             return input;
         }
+
 
     }
 }

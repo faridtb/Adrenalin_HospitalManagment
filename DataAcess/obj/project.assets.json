@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj",
       "projectName": "DataAcess",
-      "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj"
+            "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj"
             }
           }
         }

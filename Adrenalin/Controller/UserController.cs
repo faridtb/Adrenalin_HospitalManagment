@@ -11,6 +11,7 @@ namespace Adrenalin.Controller
     public class UserController
     {
         UserService userService = new UserService();
+        User user;
 
         public User CreateUser()
         {
@@ -53,7 +54,7 @@ namespace Adrenalin.Controller
                     break;
 
             }
-            User user = new User()
+             user = new User()
             {
                 Login = login,
                 Password = password,
@@ -65,59 +66,84 @@ namespace Adrenalin.Controller
         }
         public void RemoveUser()
         {
-            Alert(ConsoleColor.DarkRed, "Deletion of User\n");
-            User user = userService.Delete(GetUser().UserId);
-            Alert(ConsoleColor.Green, $"Deletion of {user.Login} completed !");
+            Alert(ConsoleColor.DarkRed, "Deletion of User");
+            if (!(user is null))
+            {
+                user = userService.Delete(GetUser().UserId);
+                Alert(ConsoleColor.Green, $"Deletion of {user.Login} completed !");
+                if (GetAllUsers().Count == 0)
+                    user = null;
+            }
+            else
+                Alert(ConsoleColor.Red, $"Deletion Failed!");
         }
         public User GetUser()
         {
-            Alert(ConsoleColor.Blue, "Enter the Id of which User you want");
+            Alert(ConsoleColor.Blue, "Enter the Id of User you want");
             int id = TryParse();
-            return userService.GetUser(id);
-        }
-        public void GetAllUsers()
-        {
-            Alert(ConsoleColor.Yellow, "List Of Users \n");
-            foreach (var item in userService.GetAll())
-                Console.WriteLine(item);
-        }
-        public void EditUser()
-        {
-            GetAllUsers();
-            User user = GetUser();
-            Alert(ConsoleColor.DarkYellow, $"Please write {user.Login}'s password for able to edit");
-            string password = Console.ReadLine();
-            if (password == user.Password)
+            user = userService.GetUser(id);
+            int choice = 0;
+            while (user is null && choice != 1)
             {
-                Console.WriteLine("What would you like to renew ?\n" +
-                "1)Login\n" +
-                "2)Password\n");
-                Console.Write("Your choice:");
-                int input = TryParse();
-                switch (input)
+                Alert(ConsoleColor.Red, "There is not any User in that id");
+                choice = BackContinue();
+                switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Login changing");
-                        user.Login = Console.ReadLine();
-                        userService.Edit(user.UserId, user);
                         break;
                     case 2:
-                        Console.WriteLine("Password changing");
-                        user.Password = Console.ReadLine();
-                        userService.Edit(user.UserId, user);
+                        user = GetUser();
                         break;
                 }
             }
-            else
+            if (!(user is null))
+                Console.WriteLine(user);
+
+            return user;
+        }
+        public List<User> GetAllUsers()
+        {
+            return userService.GetAll();
+        }
+        public void EditUser()
+        {
+            Alert(ConsoleColor.DarkYellow, "User Editing\n");
+            foreach (var item in GetAllUsers())
+                Console.WriteLine(item);
+
+            user = GetUser();
+            if (!(user is null))
             {
-                Alert(ConsoleColor.Red, "Not Found Exception");
+                Alert(ConsoleColor.DarkYellow, $"Please write {user.Login}'s password for able to edit");
+                string password = Console.ReadLine();
+                if (password == user.Password)
+                {
+                    Console.WriteLine("What would you like to renew ?\n" +
+                    "1)Login\n" +
+                    "2)Password\n");
+                    Console.Write("Your choice:");
+                    int input = TryParse();
+                    switch (input)
+                    {
+                        case 1:
+                            Console.WriteLine("Login changing");
+                            user.Login = Console.ReadLine();
+                            userService.Edit(user.UserId, user);
+                            break;
+                        case 2:
+                            Console.WriteLine("Password changing");
+                            user.Password = Console.ReadLine();
+                            userService.Edit(user.UserId, user);
+                            break;
+                    }
+                }
             }
 
         }
-        public bool CheckUser(string login, string password)
+        public bool CheckUser(string login, string password,User user)
         {
             bool tester = true;
-            if (userService.CheckUser(login, password) is null)
+            if (userService.CheckUser(login, password,user) is null)
                 tester = false;
 
             return tester;

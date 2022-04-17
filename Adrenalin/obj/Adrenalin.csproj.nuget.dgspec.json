@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Adrenalin\\Adrenalin.csproj": {}
+    "C:\\Users\\User\\Desktop\\Adrenalin\\Adrenalin\\Adrenalin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Adrenalin\\Adrenalin.csproj": {
+    "C:\\Users\\User\\Desktop\\Adrenalin\\Adrenalin\\Adrenalin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Adrenalin\\Adrenalin.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\Adrenalin\\Adrenalin.csproj",
         "projectName": "Adrenalin",
-        "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Adrenalin\\Adrenalin.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Adrenalin\\Adrenalin.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Adrenalin\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Adrenalin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,17 +28,17 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj"
               },
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj"
               },
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj": {
+    "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Business\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,14 +95,14 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj"
               },
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj": {
+    "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj",
         "projectName": "DataAcess",
-        "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\DataAcess.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\DataAcess.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\DataAcess\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\DataAcess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -159,8 +159,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj"
+              "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj"
               }
             }
           }
@@ -193,14 +193,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj": {
+    "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -247,14 +247,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj": {
+    "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\Utilities.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\Utilities.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Creation\\New folder\\Adrenalin\\Utilities\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Adrenalin\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

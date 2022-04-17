@@ -1,14 +1,17 @@
 ﻿using Business.Services;
 using Entities.Models;
 using System;
-using Utilities;
+using System.Collections.Generic;
 using static Utilities.Notifications;
+
 
 namespace Adrenalin.Controller
 {
     class MedicalServiceController
     {
         MedicalService medservice = new MedicalService();
+        Medical_Services med;
+        public int choice = 0;
 
         public void CreateMedService()
         {
@@ -20,56 +23,79 @@ namespace Adrenalin.Controller
             Console.Write("Enter the price of the service:");
             int price = TryParse();
 
-            Medical_Services medical = new Medical_Services()
+            med = new Medical_Services()
             {
                 Name = name,
                 ServiceFee = price
             };
-            medservice.Create(medical);
-            Notifications.Alert(ConsoleColor.Yellow, $"\nAbout the service\n{medical}");
+            medservice.Create(med);
+            Alert(ConsoleColor.Yellow, $"\nAbout the service\n{med}");
         }
         public Medical_Services GetMedService()
         {
             Alert(ConsoleColor.Blue, "Enter the ID of the Medical Service you are looking for");
             int id = TryParse();
-            Console.WriteLine(medservice.GetMedicalService(id));
-            return medservice.GetMedicalService(id);
+            med = medservice.GetMedicalService(id);
+            while (med is null && choice != 1)
+            {
+                Alert(ConsoleColor.Red, "There is not any Medical Service in that id");
+                choice = BackContinue();
+                switch (choice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        med = GetMedService();
+                        break;
+                }
+            }
+            if (!(med is null))
+                Console.WriteLine(med);
+            return med;
         }
-        public void GetAllService()
+        public List<Medical_Services> GetAllService()
         {
-            Alert(ConsoleColor.DarkRed, "\nMedical Serivces");
-            foreach (var item in medservice.GetAll())
-                Console.WriteLine(item);
+            return medservice.GetAll();
         }
         public void RemoveMedService()
         {
-            Alert(ConsoleColor.DarkRed, "Deletion of medical service\n");
-            Medical_Services med = medservice.Delete(GetMedService().profID);
-            Alert(ConsoleColor.DarkYellow, $"{med.Name}- service deleted");
+            Alert(ConsoleColor.DarkRed, "Deletion of medical service");
+            if (!(med is null))
+            {
+                med = medservice.Delete(GetMedService().profID);
+                Alert(ConsoleColor.DarkYellow, $"{med.Name}- service deleted");
+                if (GetAllService().Count == 0)
+                    med = null;
+            }
+            else
+                Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public void EditMedService()
         {
-            Alert(ConsoleColor.DarkYellow, "\nRegistration Editing\n");
-            Medical_Services med = GetMedService();
-            Console.WriteLine("What would you like to renew ?\n" +
-            "1)Service name\n" +
-            "2)Service Fee\n");
-            Console.Write("Your choice:");
-            int input = TryParse();
-            switch (input)
+            Alert(ConsoleColor.DarkYellow, "Medical Service Editing\n");
+            med = GetMedService();
+            if (!(med is null))
             {
-                case 1:
-                    Console.WriteLine("Name changing");
-                    med.Name = Console.ReadLine();
-                    medservice.Edit(med.profID, med);
-                    break;
-                case 2:
-                    Console.WriteLine("Price changing");
-                    med.ServiceFee = TryParse();
-                    medservice.Edit(med.profID, med);
-                    break;
-            }
+                Console.WriteLine("What would you like to renew ?\n" +
+                "1)Service name\n" +
+                "2)Service Fee\n");
+                Console.Write("Your choice:");
+                int input = TryParse();
+                switch (input)
+                {
+                    case 1:
+                        Console.WriteLine("Name changing");
+                        med.Name = Console.ReadLine();
+                        medservice.Edit(med.profID, med);
+                        break;
+                    case 2:
+                        Console.WriteLine("Price changing");
+                        med.ServiceFee = TryParse();
+                        medservice.Edit(med.profID, med);
+                        break;
+                }
 
+            }
         }
     }
 }
