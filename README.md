@@ -25,23 +25,6 @@ This screen has been added so that the doctor can accurately show his / her acti
 As the program demo is written, the category is roughly taken as an employee (it will be divided in more detail in the future - as a registrar, supplier, etc.). Only the patient can create a new object in the working system. The main functions are to open a new registration window and enter the patient (by creating a new one if there is no registered patient in the database), the doctor and the service from the database
 to add to the system
 
- 
-
-
-Operations |Admin | Director | Doctor | Staffs 
-:-----|:------:|:--------:|:------:|:------:|------: 
-__User Operations__ |+|-|-|-
-__Doctor Operations__|+|+|-|-|
-__Staff Operations__|+|+|-|-
-__Patient Operations__|+|+|+|+
-__Medical Services Operations__ |+|+|-|-
-__Staff Services Operations__ |+|+|-|-
-__Registration__|+|+|+|+
-
-
-
-> - Operations is mean that __Create,Edit,Remove,Get__
-
 - __Summary__
 It is very convenient to work with the program. The choices are made in numbers. The choices will be in different categories in certain places, and you will understand them more easily as you use the program.Good luck !
 
