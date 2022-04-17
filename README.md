@@ -40,6 +40,8 @@ __Medical Services Operations__ |+|+|-|-
 __Staff Services Operations__ |+|+|-|-
 __Registration__|+|+|+|+
 
+
+
 > - Operations is mean that __Create,Edit,Remove,Get__
 
 - __Summary__
