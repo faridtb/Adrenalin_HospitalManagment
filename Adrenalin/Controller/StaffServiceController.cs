@@ -11,6 +11,7 @@ namespace Adrenalin.Controller
         ProfessionService profession = new ProfessionService();
         Staff_Services prof;
         Staff staf = new Staff();
+        public int choice = 0;
         public void CreateProfession()
         {
             Alert(ConsoleColor.Yellow, "Adding Profession");
@@ -29,10 +30,10 @@ namespace Adrenalin.Controller
         }
         public Staff_Services GetProfession()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the Id of Profession you want");
             int id = TryParse();
             prof = profession.GetStafService(id);
-            int choice = 0;
             while (prof is null && choice != 1)
             {
                 Alert(ConsoleColor.Red, "There is not any Profession in that id");
@@ -53,27 +54,28 @@ namespace Adrenalin.Controller
         }
         public List<Staff_Services> GetAllProfessions()
         {
+            Alert(ConsoleColor.DarkCyan, "All Staff Services");
             return profession.GetAll();
         }
         public void RemoveProfession()
         {
+            foreach(var item in GetAllProfessions())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of profession");
+            prof =GetProfession();
             if (!(prof is null))
             {
-                prof = profession.Delete(GetProfession().profID);
+                prof = profession.Delete(prof.profID);
                 Alert(ConsoleColor.DarkYellow, $"{prof.Name}- profession deleted");
-                if (GetAllProfessions().Count == 0)
-                    prof = null;
             }
             else
                 Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public void EditStaffService()
         {
-            Alert(ConsoleColor.DarkYellow, "Profession Editing\n");
             foreach (var item in GetAllProfessions())
                 Console.WriteLine(item);
-
+            Alert(ConsoleColor.DarkYellow, "Profession Editing\n");
             prof = GetProfession();
             if (!(prof is null))
             {

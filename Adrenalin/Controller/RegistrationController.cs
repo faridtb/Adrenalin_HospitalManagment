@@ -16,6 +16,7 @@ namespace Adrenalin.Controller
         DoctorController docControl = new DoctorController();
         MedicalServiceController medControl = new MedicalServiceController();
         RegistrationService registrationService = new RegistrationService();
+        public int choice = 0;
 
         public void CreateRegistration()
         {
@@ -25,7 +26,9 @@ namespace Adrenalin.Controller
             int counter = 0;
             int counter1 = 0;
             int counter2 = 0;
-            patControl.GetAllPatients();
+            foreach (var item in patControl.GetAllPatients())
+                Console.WriteLine(item);
+
             pat = patControl.GetPatient();
             while (pat is null && patControl.choice != 1)
             {
@@ -43,7 +46,8 @@ namespace Adrenalin.Controller
             }
             if (!(pat is null))
             {
-                medControl.GetAllService();
+                foreach (var item in medControl.GetAllService())
+                    Console.WriteLine(item);      
                 med = medControl.GetMedService();
             }
             while (!(pat is null) && med is null && medControl.choice != 1)
@@ -98,10 +102,10 @@ namespace Adrenalin.Controller
         }
         public Registration GetRegistration()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the Id of which Registration you want");
             int id = TryParse();
             registration = registrationService.GetRegistration(id);
-            int choice = 0;
             while (registration is null && choice != 1)
             {
                 Alert(ConsoleColor.Red, "There is not any Registrations in that id");
@@ -119,21 +123,23 @@ namespace Adrenalin.Controller
                 Console.WriteLine(registration);
             return registration;
         }
-        public void RemoveRegistration() // Only director and higher level 
+        public void RemoveRegistration() 
         {
+            foreach (var item in GetAllRegistration())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of Registration");
+            registration = GetRegistration();
             if (!(registration is null))
             {
-                registration = registrationService.Delete(GetRegistration().RegistrationID);
+                registration = registrationService.Delete(registration.RegistrationID);
                 Alert(ConsoleColor.DarkYellow, $"{registration} was deleted.");
-                if (GetAllRegistration().Count == 0)
-                    registration = null;
             }
             else
                 Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public List<Registration> GetAllRegistration()
         {
+            Alert(ConsoleColor.DarkCyan, "All Registrations\n");
             return registrationService.GetAll();
         }
         public List<Registration> GetSpecificRegistration()
@@ -163,6 +169,8 @@ namespace Adrenalin.Controller
         }
         public void EditRegistration()
         {
+            foreach (var item in GetAllRegistration())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkYellow, "Registration Editing\n");
             registration = GetRegistration();
             if (!(registration is null))

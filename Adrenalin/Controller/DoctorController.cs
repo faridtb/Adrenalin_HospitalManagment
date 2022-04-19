@@ -38,21 +38,24 @@ namespace Adrenalin.Controller
         }
         public void RemoveDoctor()
         {
+            foreach (var item in GetAllDoctor())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of Doctor");
+            doc = GetDoctor();
             if (!(doc is null))
             {
-                doc = doctorService.Delete(GetDoctor().personID);
-                Alert(ConsoleColor.DarkYellow, $"Dr.{doc.Name} was deleted.");
-                if (GetAllDoctor().Count == 0)
-                    doc = null;
+                doc = doctorService.Delete(doc.personID);
+                Alert(ConsoleColor.Yellow ,$"Dr.{doc.Name} was deleted.");
+                //if (GetAllDoctor().Count == 0)
+                //    doc = null;
             }
             else
                 Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public Doctor GetDoctor()
         {
-            Alert(ConsoleColor.Blue, "\n" +
-                "~Enter the Id of which Doctor you want");
+            choice = 0;
+            Alert(ConsoleColor.Blue, "Enter the Id of which Doctor you want");
             int id = TryParse();
             doc = doctorService.GetDoctor(id);
             while (doc is null && choice != 1)
@@ -70,15 +73,19 @@ namespace Adrenalin.Controller
             }
             if (!(doc is null))
                 Console.WriteLine(doc);
+             
             return doc;
         }
         public List<Doctor> GetAllDoctor()
         {
+            Alert(ConsoleColor.DarkCyan, "\nDoctors List\n");
             return doctorService.GetAll();
         }
         public void EditDoctor()
         {
-            Alert(ConsoleColor.DarkYellow, "Renewal of doctor's information");
+            foreach (var item in GetAllDoctor())
+                Console.WriteLine(item);
+            Alert(ConsoleColor.Yellow, "Renewal of doctor's information");
             doc = GetDoctor();
             if (!(doc is null))
             {
@@ -94,26 +101,35 @@ namespace Adrenalin.Controller
                         Console.WriteLine($"Editing name of Dr.{doc.Name}");
                         doc.Name = Console.ReadLine();
                         doctorService.Edit(doc.personID, doc);
+                        Alert(ConsoleColor.Green, $"Name has been changed - {doc.Name}");
                         break;
                     case 2:
                         Console.WriteLine($"Editing surname of Dr.{doc.Name}");
                         doc.Surname = Console.ReadLine();
                         doctorService.Edit(doc.personID, doc);
+                        Alert(ConsoleColor.Green, $"Surname has been changed - {doc.Surname}");
                         break;
                     case 3:
                         Console.WriteLine($"Editing age of Dr.{doc.Name}");
                         doc.Age = TryParse();
                         doctorService.Edit(doc.personID, doc);
+                        Alert(ConsoleColor.Green, $"Age has been changed - {doc.Age}");
                         break;
                 }
             }
         }
         public void AddServiceToDoc()
         {
+            foreach (var item in GetAllDoctor())
+                Console.WriteLine(item);    
             doc = GetDoctor();
             if (!(doc is null))
-                 med = medservice.GetMedService();         
-            if (!(med is null)&&!(doc is null))
+            {
+                foreach (var item in medservice.GetAllService())
+                    Console.WriteLine(item);
+                med = medservice.GetMedService();
+            }
+            if (!(med is null) && !(doc is null))
             {
                 if (!(doc.services.Contains(med)))
                 {
@@ -121,25 +137,14 @@ namespace Adrenalin.Controller
                     Alert(ConsoleColor.Green, $"{med.Name} service add to DR.{doc.Name}");
                 }
                 else
-                    Alert(ConsoleColor.DarkYellow, $"{doc.Name} already exist {med.Name} service");
-            }
-            
-            //Console.Write(@$"Do you want change price of {med.Name} for Dr.{docsrv.Name} \n" +
-            //    $"Existing price:{med.ServiceFee}\n");
-            //Alert(ConsoleColor.DarkYellow, "Yes - press 1");
-            //Console.Write("Your choice:");
-            //int choice = TryParse();
-            //if (choice == 1)
-            //{
-            //    Console.Write("New Price:");
-            //    docsrv.services.Find(i => i.profID == med.profID).ServiceFee = TryParse();
-            //}
+                    Alert(ConsoleColor.Yellow, $"{doc.Name} already exist {med.Name} service");
+            }      
         }
         public void ShowServiceList()
         {
             List<Doctor> doctors = GetAllDoctor().FindAll(i => i.services.Contains(medservice.GetMedService()));
-                foreach (var item in doctors)
-                    Console.WriteLine(item);
+            foreach (var item in doctors)
+                Console.WriteLine(item);
         }
         public void ProfitInfo()
         {

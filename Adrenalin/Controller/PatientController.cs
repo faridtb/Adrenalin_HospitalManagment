@@ -31,19 +31,21 @@ namespace Adrenalin.Controller
         }
         public void RemovePatient()
         {
+            foreach (var item in GetAllPatients())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of Patients");
+            patients = GetPatient();
             if (!(patients is null))
             { 
-                patients = patientService.Delete(GetPatient().personID);
+                patients = patientService.Delete(patients.personID);
                 Alert(ConsoleColor.Green, $"Deletion of {patients.Name} completed !");
-                if (GetAllPatients().Count == 0)
-                    patients = null;
             }
             else
                 Alert(ConsoleColor.Red, "Deletion Failed!");
             }
         public Patients GetPatient()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the Id of which Patient you want");
             int id = TryParse();
             patients = patientService.GetPatient(id);
@@ -66,10 +68,13 @@ namespace Adrenalin.Controller
         }
         public List <Patients> GetAllPatients()
         {
+            Alert(ConsoleColor.DarkCyan, "Patients list");
             return patientService.GetAll();             
         }
         public void EditPatient()
         {
+            foreach (var item in GetAllPatients())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkYellow, "Editing Patient Info\n");
              patients = GetPatient();
             if (!(patients is null))

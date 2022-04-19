@@ -33,7 +33,8 @@ namespace Utilities
             admin=1,
             director,
             doctor,
-            staff
+            staff,
+            custom
         };
         public static int BackContinue()
         {

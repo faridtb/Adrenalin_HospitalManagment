@@ -10,7 +10,8 @@ namespace Entities.Models
         {
             return $"Service ID:{profID}\n" +
                 $"Service name:{Name}\n" +
-                $"Service price:{ServiceFee}";
+                $"Service price:{ServiceFee}\n" +
+                $"--------------";
 
         }
     }

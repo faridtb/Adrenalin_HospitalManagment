@@ -22,3 +22,15 @@ C:\Users\User\Desktop\Creation\New folder\Adrenalin\DataAcess\obj\Debug\netcorea
 C:\Users\User\Desktop\Creation\New folder\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.csproj.CopyComplete
 C:\Users\User\Desktop\Creation\New folder\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.dll
 C:\Users\User\Desktop\Creation\New folder\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.pdb
+C:\Users\User\Desktop\Adrenalin\DataAcess\bin\Debug\netcoreapp3.1\DataAcess.deps.json
+C:\Users\User\Desktop\Adrenalin\DataAcess\bin\Debug\netcoreapp3.1\DataAcess.dll
+C:\Users\User\Desktop\Adrenalin\DataAcess\bin\Debug\netcoreapp3.1\DataAcess.pdb
+C:\Users\User\Desktop\Adrenalin\DataAcess\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\User\Desktop\Adrenalin\DataAcess\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.AssemblyInfo.cs
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.csproj.CopyComplete
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.dll
+C:\Users\User\Desktop\Adrenalin\DataAcess\obj\Debug\netcoreapp3.1\DataAcess.pdb

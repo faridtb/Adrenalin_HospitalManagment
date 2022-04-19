@@ -74,7 +74,7 @@ namespace Utilities
                "0)Quit");
             return TestChoice(i);
 
-        }
+        }   
         public static int StaffMenuJunior()
         {
             int i = 1;

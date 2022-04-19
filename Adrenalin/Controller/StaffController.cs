@@ -11,6 +11,7 @@ namespace Adrenalin.Controller
         StaffService staffService = new StaffService();
         StaffServiceController proffesion = new StaffServiceController();
         Staff staff;
+        public int choice = 0;
 
         public void CreateStaff()
         {
@@ -41,23 +42,24 @@ namespace Adrenalin.Controller
         }
         public void RemoveStaff()
         {
+            foreach (var item in GetAllStaff())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of Staff");
+            staff = GetStaff();
             if (!(staff is null))
             {
-                staff = staffService.Delete(GetStaff().personID);
+                staff = staffService.Delete(staff.personID);
                 Alert(ConsoleColor.DarkYellow, $"Staff:{staff.Name} was deleted");
-                if (GetAllStaff().Count == 0)
-                    staff = null;
             }
             else
                 Alert(ConsoleColor.Red, $"Deletion failed");
         }
         public Staff GetStaff()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the Id of which Staff you want");
             int id = TryParse();
-            staff = staffService.GetStaff(id);
-            int choice = 0;
+            staff = staffService.GetStaff(id);       
             while (staff is null && choice != 1)
             {
                 Alert(ConsoleColor.Red, "There is not any Staff in that id");
@@ -77,11 +79,14 @@ namespace Adrenalin.Controller
         }
         public List<Staff> GetAllStaff()
         {
+            Alert(ConsoleColor.DarkCyan, "\nStaff List\n");
             return staffService.GetAll();
         }
         public void EditStaff()
         {
-            Alert(ConsoleColor.DarkYellow, "Editing Staff Info\n");
+            foreach (var item in GetAllStaff())
+                Console.WriteLine(item);
+            Alert(ConsoleColor.Yellow, "Renewal of staff's information");
             staff = GetStaff();
             if (!(staff is null))
             {

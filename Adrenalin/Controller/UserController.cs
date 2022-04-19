@@ -2,8 +2,6 @@
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Utilities;
 using static Utilities.Notifications;
 
 namespace Adrenalin.Controller
@@ -12,7 +10,7 @@ namespace Adrenalin.Controller
     {
         UserService userService = new UserService();
         User user;
-
+        public int choice = 0;
         public User CreateUser()
         {
             Alert(ConsoleColor.Blue, "---------------\n" +
@@ -54,7 +52,7 @@ namespace Adrenalin.Controller
                     break;
 
             }
-             user = new User()
+            user = new User()
             {
                 Login = login,
                 Password = password,
@@ -66,10 +64,13 @@ namespace Adrenalin.Controller
         }
         public void RemoveUser()
         {
+            foreach (var item in GetAllUsers())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of User");
+            user = GetUser();
             if (!(user is null))
             {
-                user = userService.Delete(GetUser().UserId);
+                user = userService.Delete(user.UserId);
                 Alert(ConsoleColor.Green, $"Deletion of {user.Login} completed !");
                 if (GetAllUsers().Count == 0)
                     user = null;
@@ -79,10 +80,10 @@ namespace Adrenalin.Controller
         }
         public User GetUser()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the Id of User you want");
             int id = TryParse();
-            user = userService.GetUser(id);
-            int choice = 0;
+            user = userService.GetUser(id); 
             while (user is null && choice != 1)
             {
                 Alert(ConsoleColor.Red, "There is not any User in that id");
@@ -107,14 +108,13 @@ namespace Adrenalin.Controller
         }
         public void EditUser()
         {
-            Alert(ConsoleColor.DarkYellow, "User Editing\n");
+            Alert(ConsoleColor.Yellow, "User Editing");
             foreach (var item in GetAllUsers())
                 Console.WriteLine(item);
-
             user = GetUser();
             if (!(user is null))
-            {
-                Alert(ConsoleColor.DarkYellow, $"Please write {user.Login}'s password for able to edit");
+            {         
+                Alert(ConsoleColor.Yellow, $"Please write {user.Login}'s password for able to edit");
                 string password = Console.ReadLine();
                 if (password == user.Password)
                 {
@@ -137,13 +137,17 @@ namespace Adrenalin.Controller
                             break;
                     }
                 }
+
+                else
+                    Alert(ConsoleColor.Red, "Passwords do not match");
+
             }
 
         }
-        public bool CheckUser(string login, string password,User user)
+        public bool CheckUser(string login, string password, User user)
         {
             bool tester = true;
-            if (userService.CheckUser(login, password,user) is null)
+            if (userService.CheckUser(login, password, user) is null)
                 tester = false;
 
             return tester;

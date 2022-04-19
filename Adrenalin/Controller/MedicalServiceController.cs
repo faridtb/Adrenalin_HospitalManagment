@@ -33,6 +33,7 @@ namespace Adrenalin.Controller
         }
         public Medical_Services GetMedService()
         {
+            choice = 0;
             Alert(ConsoleColor.Blue, "Enter the ID of the Medical Service you are looking for");
             int id = TryParse();
             med = medservice.GetMedicalService(id);
@@ -55,24 +56,28 @@ namespace Adrenalin.Controller
         }
         public List<Medical_Services> GetAllService()
         {
+            Alert(ConsoleColor.DarkCyan, "\nMedical Services\n");
             return medservice.GetAll();
         }
         public void RemoveMedService()
         {
+            foreach (var item in GetAllService())
+                Console.WriteLine(item);
             Alert(ConsoleColor.DarkRed, "Deletion of medical service");
+            med = GetMedService();
             if (!(med is null))
             {
-                med = medservice.Delete(GetMedService().profID);
+                med = medservice.Delete(med.profID);
                 Alert(ConsoleColor.DarkYellow, $"{med.Name}- service deleted");
-                if (GetAllService().Count == 0)
-                    med = null;
             }
             else
                 Alert(ConsoleColor.Red, "Deletion Failed!");
         }
         public void EditMedService()
         {
-            Alert(ConsoleColor.DarkYellow, "Medical Service Editing\n");
+            foreach (var item in GetAllService())
+                Console.WriteLine(item);
+            Alert(ConsoleColor.Yellow, "Renewal of Medical services information");
             med = GetMedService();
             if (!(med is null))
             {
@@ -96,6 +101,8 @@ namespace Adrenalin.Controller
                 }
 
             }
+            else
+                Alert(ConsoleColor.Red, "There is Not Any Service");
         }
     }
 }

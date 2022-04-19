@@ -71,8 +71,6 @@ namespace Adrenalin
                             input = StaffMainMenu();
 
 
-
-
                         switch (input)
                         {
                             case 1 when role.ToString() == Role.admin.ToString() || role.ToString() == Role.director.ToString():
